@@ -1,10 +1,5 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class MainFrame {
 
@@ -55,7 +50,7 @@ public class MainFrame {
 					JOptionPane.showMessageDialog(null,error);
 				}
 				else{
-					otherView.open(p);;
+					otherView.open(p);
 					frame.setVisible(false);
 				}
 			}
@@ -67,8 +62,9 @@ public class MainFrame {
 	}
 	
 	public static void main(String args[]) {
-		Patient.createPatientList();
 		Medicine.createMedList();
+		Patient.createPatientList();
+		//Medicine.createMedList();
 		MainFrame p = new MainFrame();
 	}
 }

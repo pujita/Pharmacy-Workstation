@@ -11,6 +11,7 @@ public class Medicine {
 	private int medID;
 	private String scientificName;
 	private ArrayList<String> time = new ArrayList<String>();
+	private String timeString;
 	private int dose;
 	private String notes;
 	static HashMap<String, Medicine> medMap = new HashMap<String, Medicine>();
@@ -25,6 +26,7 @@ public class Medicine {
 		setName(tokens[1]);
 		setScientificName(tokens[2]);
 		setTime(tokens[3]);
+		setTimeString(tokens[3]);
 		setDose(tokens[4]);
 		setNotes(tokens[5]);
 	}
@@ -56,6 +58,10 @@ public class Medicine {
 		for (int i = 0; i < times.length; i++){
 			this.time.add(times[i]);
 		}
+	}
+	
+	public void setTimeString( String time){
+		this.timeString = time;
 	}
 	
 	public void setDose(String dose){
@@ -92,6 +98,10 @@ public class Medicine {
 		return time;
 	}
 	
+	public String getTimeString(){
+		return this.timeString;
+	}
+	
 	public String getDose(){
 		return Integer.toString(dose);
 	}
@@ -116,13 +126,13 @@ public class Medicine {
 		}
 	}
 
-	/*
+	
 	public static void main(String[] args){
 		createMedList();
-		//System.out.println(Medicine.medMap.get("2").getName());
-		//System.out.println(Medicine.medMap.get("2").getScientificName());
-		//System.out.println(Medicine.medMap.get("2").getDose());
+		System.out.println(Medicine.medMap.get("1011").getName());
+		System.out.println(Medicine.medMap.get("1011").getScientificName());
+		System.out.println(Medicine.medMap.get("1011").getDose());
 		
 	}
-	*/
+	
 }

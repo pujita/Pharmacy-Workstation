@@ -1,8 +1,7 @@
 import javax.swing.*;
-
 import java.awt.*;
-import java.awt.event.*;
 
+@SuppressWarnings("serial")
 public class PatientInfoPanel extends JPanel{
 
 	JLabel patientName;

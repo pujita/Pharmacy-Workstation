@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Scanner;
 
+@SuppressWarnings("serial")
 public class PatientInfoFrame extends JFrame{
 
 	
@@ -13,10 +11,12 @@ public class PatientInfoFrame extends JFrame{
 	JTextField textBox;
 	MainFrame prevFrame;
 	PatientInfoPanel infoPanel;
+	MultiMedsPanel medsPanel;
 	
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
 		infoPanel = new PatientInfoPanel();
+		//medsPanel = new MultiMedsPanel(p);
 
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
@@ -26,7 +26,8 @@ public class PatientInfoFrame extends JFrame{
 
 		this.prevFrame = prevFrame;
 
-		super.add(infoPanel, BorderLayout.CENTER);
+		super.add(infoPanel, BorderLayout.PAGE_START);
+		//super.add(medsPanel, BorderLayout.CENTER);
 		super.add(buttonPanel,BorderLayout.PAGE_END);
 		super.pack();
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -35,6 +36,8 @@ public class PatientInfoFrame extends JFrame{
 	
 	public void open(Patient p) {
 		infoPanel.setPatient(p);
+		medsPanel = new MultiMedsPanel(p);
+		super.add(medsPanel, BorderLayout.CENTER);
 		super.pack();
 		super.setVisible(true);
 	}

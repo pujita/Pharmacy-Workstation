@@ -10,7 +10,7 @@ public class Patient{
 	private int patientID;
 	private int patientRoom;
 	private String nurse;
-	private ArrayList<Medicine> meds = new ArrayList<Medicine>();
+	private HashMap<String, Medicine> meds = new HashMap<String, Medicine>();
 	static HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
 	
 	public Patient(){	
@@ -25,7 +25,7 @@ public class Patient{
 		setNurse(tokens[4]);
 		String[] medID = tokens[5].split(",");
 		for(int i = 0; i < medID.length; i++){
-			meds.add(Medicine.medMap.get(medID[i]));
+			meds.put(medID[i], Medicine.medMap.get(medID[i]));
 		}
 	}
 	
@@ -99,6 +99,10 @@ public class Patient{
 		return nurse;
 	}
 	
+	public HashMap<String, Medicine> getMeds(){
+		return this.meds;
+	}
+	
 	@Override
 	public String toString() {
 		return (patientID + "\n" + patientName + "\n" +
@@ -121,12 +125,13 @@ public class Patient{
 		}
 	}
 
-	/*
+	
 	public static void main (String[] args) {
-		createPatientList();
-		//System.out.println(patientList.get(2));
+		//Medicine.createMedList();
+		//Patient.createPatientList();
+		//System.out.println(Patient.patientMap.get("1").getMeds().get("1011").getName());
 	}
-	*/
+	
 }
 
 /*txt
