@@ -25,6 +25,7 @@ public class PujitaFrame extends JFrame{
 		panel.add(button);
 		panel.add(label);
 		super.add(panel);
+		super.pack();
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
@@ -60,7 +61,6 @@ public class PujitaFrame extends JFrame{
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			goBack();
-
 		}
 	}
 }
