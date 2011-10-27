@@ -5,16 +5,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class PujitaFrame extends JFrame{
+public class PatientInfoFrame extends JFrame{
 
 	
 	JButton button;
 	JPanel panel;
 	JLabel label;
 	JTextField textBox;
-	PujitaTest prevFrame;
+	MainFrame prevFrame;
 	
-	public PujitaFrame(PujitaTest prevFrame){
+	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
 		panel = new JPanel();
 		button = new JButton("Back");

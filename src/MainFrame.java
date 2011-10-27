@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class PujitaTest {
+public class MainFrame {
 
 	JFrame frame;
 	JButton button1;
@@ -14,10 +14,10 @@ public class PujitaTest {
 	JLabel label;
 	JTextField textBox;
 	//PujitaPanel myPanel;
-	PujitaFrame otherView;
+	PatientInfoFrame otherView;
 	String patientID;
 	
-	public PujitaTest(){
+	public MainFrame(){
 		frame = new JFrame("Pharmacy Workstation");
 		panel = new JPanel();
 		button1 = new JButton("get info");
@@ -28,7 +28,7 @@ public class PujitaTest {
 		button1.addActionListener(listen);	
 		button2.addActionListener(listen);	
 		
-		otherView = new PujitaFrame(this);
+		otherView = new PatientInfoFrame(this);
 		patientID = "0";
 		
 		frame.add(panel);
@@ -60,6 +60,6 @@ public class PujitaTest {
 	}
 	
 	public static void main(String args[]) {
-		PujitaTest p = new PujitaTest();
+		MainFrame p = new MainFrame();
 	}
 }
