@@ -22,7 +22,7 @@ public class MainFrame {
 		panel = new JPanel();
 		button1 = new JButton("get info");
 		button2 = new JButton("button2");
-		label = new JLabel("Test");
+		label = new JLabel("Patient ID:");
 		textBox = new JTextField("Type patient ID");
 		ButtonListener listen = new ButtonListener();
 		button1.addActionListener(listen);	

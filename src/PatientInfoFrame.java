@@ -8,25 +8,37 @@ import java.util.Scanner;
 public class PatientInfoFrame extends JFrame{
 
 	
-	JButton button;
-	JPanel panel;
-	JLabel label;
+	JButton backButton;
+	JPanel infoPanel;
+	JPanel buttonPanel;
+	JLabel patientName;
 	JTextField textBox;
 	MainFrame prevFrame;
 	
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
-		panel = new JPanel();
-		button = new JButton("Back");
-		label = new JLabel("Name");
-		button.addActionListener(new ButtonListener());	
-		this.prevFrame = prevFrame;
+		infoPanel = new JPanel();
+		infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
+		//patientName = new JLabel("Name: ");
+		//infoPanel.add(patientName);
 		
-		panel.add(button);
-		panel.add(label);
-		super.add(panel);
+		buttonPanel = new JPanel();
+		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
+		backButton = new JButton("Back");
+		backButton.addActionListener(new ButtonListener());	
+		buttonPanel.add(backButton);
+		
+		this.prevFrame = prevFrame;
+
+		super.add(infoPanel, BorderLayout.CENTER);
+		super.add(buttonPanel,BorderLayout.PAGE_END);
 		super.pack();
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}
+	public void setPatientName(String name){
+		patientName = new JLabel("Name: "+ name);
+		infoPanel.add(patientName);
+		super.pack();
 	}
 	
 	public void open() {
@@ -44,6 +56,8 @@ public class PatientInfoFrame extends JFrame{
 			
 				if (Integer.parseInt(tokens[0]) ==patientID){
 					System.out.println(temp);
+					this.setPatientName(tokens[1]);
+					break;
 				}
 			}
 			fin.close();
