@@ -12,16 +12,19 @@ public class PatientInfoFrame extends JFrame{
 	JPanel infoPanel;
 	JPanel buttonPanel;
 	JLabel patientName;
+
 	JTextField textBox;
 	MainFrame prevFrame;
 	
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
+		
+		/*
 		infoPanel = new JPanel();
 		infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
 		patientName = new JLabel("Name: ");
 		//infoPanel.add(patientName);
-		
+		*/
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
 		backButton = new JButton("Back");
@@ -35,11 +38,13 @@ public class PatientInfoFrame extends JFrame{
 		super.pack();
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
+	/*
 	public void setPatientName(String name){
 		patientName.setText("Name: "+ name);
 		infoPanel.add(patientName);
 		super.pack();
 	}
+	*/
 	
 	public void open() {
 		super.setVisible(true);
@@ -52,7 +57,7 @@ public class PatientInfoFrame extends JFrame{
 
 			while(scan.hasNextLine()){
 				String temp = scan.nextLine();
-				String[] tokens = temp.split(",");
+				String[] tokens = temp.split("|");
 			
 				if (Integer.parseInt(tokens[0]) ==patientID){
 					System.out.println(temp);
