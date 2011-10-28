@@ -19,7 +19,7 @@ public class PatientInfoFrame extends JFrame{
 		super("Pharmacy Workstation");
 		infoPanel = new JPanel();
 		infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
-		//patientName = new JLabel("Name: ");
+		patientName = new JLabel("Name: ");
 		//infoPanel.add(patientName);
 		
 		buttonPanel = new JPanel();
@@ -27,7 +27,7 @@ public class PatientInfoFrame extends JFrame{
 		backButton = new JButton("Back");
 		backButton.addActionListener(new ButtonListener());	
 		buttonPanel.add(backButton);
-		
+
 		this.prevFrame = prevFrame;
 
 		super.add(infoPanel, BorderLayout.CENTER);
@@ -36,7 +36,7 @@ public class PatientInfoFrame extends JFrame{
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	public void setPatientName(String name){
-		patientName = new JLabel("Name: "+ name);
+		patientName.setText("Name: "+ name);
 		infoPanel.add(patientName);
 		super.pack();
 	}
