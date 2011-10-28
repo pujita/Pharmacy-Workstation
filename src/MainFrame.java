@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class MainFrame {
@@ -47,10 +48,16 @@ public class MainFrame {
 	
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
+			Patient p = Patient.patientMap.get(textBox.getText());
+			String error = "Invalid Patient ID. Try again.";
 			if (e.getSource() == button1) {
-				otherView.open();
-				otherView.displayInfo(Integer.parseInt(textBox.getText()));
-				frame.setVisible(false);
+				if(p == null){
+					JOptionPane.showMessageDialog(null,error);
+				}
+				else{
+					otherView.open(p);;
+					frame.setVisible(false);
+				}
 			}
 			else if (e.getSource() == button2) {
 				System.out.println("you clicked");
@@ -60,6 +67,7 @@ public class MainFrame {
 	}
 	
 	public static void main(String args[]) {
+		Patient.createPatientList();
 		MainFrame p = new MainFrame();
 	}
 }

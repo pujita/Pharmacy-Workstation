@@ -9,22 +9,15 @@ public class PatientInfoFrame extends JFrame{
 
 	
 	JButton backButton;
-	JPanel infoPanel;
 	JPanel buttonPanel;
-	JLabel patientName;
-
 	JTextField textBox;
 	MainFrame prevFrame;
+	PatientInfoPanel infoPanel;
 	
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
-		
-		/*
-		infoPanel = new JPanel();
-		infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.PAGE_AXIS));
-		patientName = new JLabel("Name: ");
-		//infoPanel.add(patientName);
-		*/
+		infoPanel = new PatientInfoPanel();
+
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
 		backButton = new JButton("Back");
@@ -46,10 +39,12 @@ public class PatientInfoFrame extends JFrame{
 	}
 	*/
 	
-	public void open() {
+	public void open(Patient p) {
+		infoPanel.setPatient(p);
+		super.pack();
 		super.setVisible(true);
 	}
-
+/*
 	public void displayInfo(int patientID){
 		try {
 			FileReader fin = new FileReader("Test.txt");
@@ -71,6 +66,7 @@ public class PatientInfoFrame extends JFrame{
 			System.err.println(e);
 		}
 	}
+	*/
 	
 	public void goBack(){
 		super.setVisible(false);

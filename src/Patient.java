@@ -1,18 +1,27 @@
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
-
 public class Patient{
-	String patientName;
-	String address;
-	int patientID;
-	int patientRoom;
-	String nurse;
-	static ArrayList<Patient> patientList = new ArrayList<Patient>();
+	private String patientName;
+	private String address;
+	private int patientID;
+	private int patientRoom;
+	private String nurse;
+	static HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
 	//med has name, dose, time
 	public Patient(){	
+	}
+	
+	public Patient(String line, String delim) {
+		String[] tokens = line.split(delim);
+		setID(tokens[0]);
+		setName(tokens[1]);
+		setAddress(tokens[2]);
+		setRoom(tokens[3]);
+		setNurse(tokens[4]);	
 	}
 	
 	public Patient(String name, String address, int id, int room, String nurse) {
@@ -85,34 +94,31 @@ public class Patient{
 		return nurse;
 	}
 	
-
 	@Override
 	public String toString() {
 		return (patientID + "\n" + patientName + "\n" +
 				address + "\n" + nurse + "\n" + patientRoom);
 	}
 	
-	public static void createPatientList () throws IOException{
-		FileReader fin = new FileReader("Test.txt");
-		Scanner scan = new Scanner(fin);
-	
-		while(scan.hasNextLine()){
-			String info = scan.nextLine();
-			String[] tokens = info.split("\\|");
-			Patient newPatient = new Patient();
-			newPatient.setID(tokens[0]);
-			newPatient.setName(tokens[1]);
-			newPatient.setAddress(tokens[2]);
-			newPatient.setRoom(tokens[3]);
-			newPatient.setNurse(tokens[4]);
-			patientList.add(newPatient);
+	public static void createPatientList() {
+		try {
+			FileReader fin = new FileReader("Test.txt");
+			Scanner scan = new Scanner(fin);
+		
+			while(scan.hasNextLine()){
+				String info = scan.nextLine();
+				patientMap.put(info.split("\\|")[0], new Patient(info, "\\|"));
+			}
+			fin.close();
 		}
-		fin.close();
+		catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public static void main (String[] args) throws IOException{
+	public static void main (String[] args) {
 		createPatientList();
-		System.out.println(patientList.get(2));
+		//System.out.println(patientList.get(2));
 	}
 }
 
