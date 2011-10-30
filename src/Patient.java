@@ -10,8 +10,9 @@ public class Patient{
 	private int patientID;
 	private int patientRoom;
 	private String nurse;
+	private ArrayList<Medicine> meds = new ArrayList<Medicine>();
 	static HashMap<String, Patient> patientMap = new HashMap<String, Patient>();
-	//med has name, dose, time
+	
 	public Patient(){	
 	}
 	
@@ -21,7 +22,11 @@ public class Patient{
 		setName(tokens[1]);
 		setAddress(tokens[2]);
 		setRoom(tokens[3]);
-		setNurse(tokens[4]);	
+		setNurse(tokens[4]);
+		String[] medID = tokens[5].split(",");
+		for(int i = 0; i < medID.length; i++){
+			meds.add(Medicine.medMap.get(medID[i]));
+		}
 	}
 	
 	public Patient(String name, String address, int id, int room, String nurse) {
@@ -116,10 +121,12 @@ public class Patient{
 		}
 	}
 
+	/*
 	public static void main (String[] args) {
 		createPatientList();
 		//System.out.println(patientList.get(2));
 	}
+	*/
 }
 
 /*txt

@@ -116,6 +116,7 @@ public class Medicine {
 		}
 	}
 
+	/*
 	public static void main(String[] args){
 		createMedList();
 		//System.out.println(Medicine.medMap.get("2").getName());
@@ -123,4 +124,5 @@ public class Medicine {
 		//System.out.println(Medicine.medMap.get("2").getDose());
 		
 	}
+	*/
 }
