@@ -102,7 +102,7 @@ public class Patient{
 	
 	public static void createPatientList() {
 		try {
-			FileReader fin = new FileReader("Test.txt");
+			FileReader fin = new FileReader("Patients.txt");
 			Scanner scan = new Scanner(fin);
 		
 			while(scan.hasNextLine()){

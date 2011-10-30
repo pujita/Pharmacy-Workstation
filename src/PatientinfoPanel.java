@@ -25,6 +25,7 @@ public class PatientInfoPanel extends JPanel{
 		nurse = new JLabel(nurseHeader);
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		add(Box.createRigidArea(new Dimension(0,10)));
 		add(patientName);
 		add(patientID);
 		add(address);

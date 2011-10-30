@@ -31,42 +31,14 @@ public class PatientInfoFrame extends JFrame{
 		super.pack();
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
-	/*
-	public void setPatientName(String name){
-		patientName.setText("Name: "+ name);
-		infoPanel.add(patientName);
-		super.pack();
-	}
-	*/
+
 	
 	public void open(Patient p) {
 		infoPanel.setPatient(p);
 		super.pack();
 		super.setVisible(true);
 	}
-/*
-	public void displayInfo(int patientID){
-		try {
-			FileReader fin = new FileReader("Test.txt");
-			Scanner scan = new Scanner(fin);
 
-			while(scan.hasNextLine()){
-				String temp = scan.nextLine();
-				String[] tokens = temp.split("|");
-			
-				if (Integer.parseInt(tokens[0]) ==patientID){
-					System.out.println(temp);
-					this.setPatientName(tokens[1]);
-					break;
-				}
-			}
-			fin.close();
-		}
-		catch (IOException e) {
-			System.err.println(e);
-		}
-	}
-	*/
 	
 	public void goBack(){
 		super.setVisible(false);

@@ -68,6 +68,7 @@ public class MainFrame {
 	
 	public static void main(String args[]) {
 		Patient.createPatientList();
+		Medicine.createMedList();
 		MainFrame p = new MainFrame();
 	}
 }
