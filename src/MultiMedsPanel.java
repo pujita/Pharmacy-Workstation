@@ -27,11 +27,9 @@ public class MultiMedsPanel extends JPanel{
 		panel[3].panelReset();
 		panel[4].panelReset();
 		
-		//setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		int count = 0;
 		for (String key : p.getMeds().keySet()) {
 			panel[count].setPanel(p.getMeds().get(key));
-			//add(new MedInfoPanel(p.getMeds().get(key)));
 			count++;
 		}	
 	}

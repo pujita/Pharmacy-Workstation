@@ -1,15 +1,16 @@
 import javax.swing.*;
-import java.awt.event.*;
 
+import java.awt.BorderLayout;
+import java.awt.event.*;
+// Start screen
 public class MainFrame {
 
 	JFrame frame;
 	JButton button1;
-	JButton button2;
+	//JButton button2;
 	JPanel panel;
 	JLabel label;
 	JTextField textBox;
-	//PujitaPanel myPanel;
 	PatientInfoFrame otherView;
 	String patientID;
 	
@@ -17,23 +18,24 @@ public class MainFrame {
 		frame = new JFrame("Pharmacy Workstation");
 		panel = new JPanel();
 		button1 = new JButton("get info");
-		button2 = new JButton("button2");
+		//button2 = new JButton("button2");
 		label = new JLabel("Patient ID:");
 		textBox = new JTextField("Type patient ID");
 		ButtonListener listen = new ButtonListener();
 		button1.addActionListener(listen);	
-		button2.addActionListener(listen);	
+		//button2.addActionListener(listen);	
 		
 		otherView = new PatientInfoFrame(this);
 		patientID = "0";
-		
+		frame.setSize(500, 700);
 		frame.add(panel);
-		panel.add(button1);
-		panel.add(button2);
-		panel.add(label);
-		panel.add(textBox);
+	
+		panel.add(button1, BorderLayout.PAGE_END);
+		//panel.add(button2);
+		panel.add(label, BorderLayout.CENTER);
+		panel.add(textBox,BorderLayout.CENTER);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.pack();
+		//frame.pack();
 		frame.setVisible(true);
 	}
 
@@ -54,9 +56,9 @@ public class MainFrame {
 					frame.setVisible(false);
 				}
 			}
-			else if (e.getSource() == button2) {
-				System.out.println("you clicked");
-			}
+			//else if (e.getSource() == button2) {
+				//System.out.println("you clicked");
+			//}
 			
 		}
 	}
@@ -64,7 +66,6 @@ public class MainFrame {
 	public static void main(String args[]) {
 		Medicine.createMedList();
 		Patient.createPatientList();
-		//Medicine.createMedList();
 		MainFrame p = new MainFrame();
 	}
 }

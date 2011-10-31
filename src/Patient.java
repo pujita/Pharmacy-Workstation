@@ -134,8 +134,4 @@ public class Patient{
 	
 }
 
-/*txt
-1|Pujita Vijayvargiya|333764 GAtech Station, Atlanta, GA 30332|202|Jenny
-2|Sam Brown|123 Florida, 40883|306|Melissa
-3|David Smith| 784 Peachtree St., Atlanta ,GA 30332| 402|Jenny 
-*/
+
