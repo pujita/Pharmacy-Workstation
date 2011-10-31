@@ -6,13 +6,18 @@ import java.awt.event.*;
 public class PatientInfoFrame extends JFrame{
 
 	
-	JButton backButton;
-	JPanel buttonPanel;
-	JTextField textBox;
-	MainFrame prevFrame;
-	PatientInfoPanel infoPanel;
-	MultiMedsPanel medsPanel;
+	private JButton backButton;
+	private JPanel buttonPanel;
+	private JTextField textBox;
+	private MainFrame prevFrame;
+	private PatientInfoPanel infoPanel;
+	private MultiMedsPanel medsPanel;
 	
+	/**
+	 * Constructor for this class. Requires a reference to {@link MainFrame} in order for
+	 * it to go back when goBack is called.
+	 * @param prevFrame reference to previous {@link MainFrame}.
+	 */
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
 		infoPanel = new PatientInfoPanel();
@@ -34,7 +39,10 @@ public class PatientInfoFrame extends JFrame{
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
-	
+	/**
+	 * Opens the Frame with the selected Patient Information.
+	 * @param p The Patient that you want to display information for.
+	 */
 	public void open(Patient p) {
 		infoPanel.setPatient(p);
 		medsPanel.setMedsPanel(p);
@@ -42,12 +50,19 @@ public class PatientInfoFrame extends JFrame{
 		super.setVisible(true);
 	}
 
-	
-	public void goBack(){
+	/**
+	 * Called by {@link ButtonListener}. Takes a user back to the MainFrame by changing visibility state.
+	 */
+	private void goBack(){
 		super.setVisible(false);
 		prevFrame.frame.setVisible(true);
 	}
 	
+	/**
+	 * Listener called when user selects "Go Back". The user will be taken back to the {@link MainFrame}
+	 * @author pujita
+	 *
+	 */
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			goBack();
