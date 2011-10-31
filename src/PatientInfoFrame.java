@@ -16,7 +16,7 @@ public class PatientInfoFrame extends JFrame{
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
 		infoPanel = new PatientInfoPanel();
-		//medsPanel = new MultiMedsPanel(p);
+		medsPanel = new MultiMedsPanel();
 
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
@@ -27,7 +27,7 @@ public class PatientInfoFrame extends JFrame{
 		this.prevFrame = prevFrame;
 
 		super.add(infoPanel, BorderLayout.PAGE_START);
-		//super.add(medsPanel, BorderLayout.CENTER);
+		super.add(medsPanel, BorderLayout.CENTER);
 		super.add(buttonPanel,BorderLayout.PAGE_END);
 		super.pack();
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,7 +36,7 @@ public class PatientInfoFrame extends JFrame{
 	
 	public void open(Patient p) {
 		infoPanel.setPatient(p);
-		medsPanel = new MultiMedsPanel(p);
+		medsPanel.setMedsPanel(p);
 		super.add(medsPanel, BorderLayout.CENTER);
 		super.pack();
 		super.setVisible(true);

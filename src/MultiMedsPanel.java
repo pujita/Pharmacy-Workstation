@@ -2,8 +2,12 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class MultiMedsPanel extends JPanel{
+	
+	public MultiMedsPanel(){
 		
-	public MultiMedsPanel(Patient p){
+	}
+	
+	public void setMedsPanel(Patient p){
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
