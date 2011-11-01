@@ -2,6 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * 
+ * @author pujita
+ *
+ */
 @SuppressWarnings("serial")
 public class PatientInfoFrame extends JFrame{
 
