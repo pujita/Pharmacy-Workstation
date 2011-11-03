@@ -46,7 +46,6 @@ public class MainFrame extends JFrame implements FrameInterface{
 	public static void main(String args[]) {
 		Medicine.createMedList();
 		Patient.createPatientList();
-		//System.out.println(Medicine.medMap.get("1022").getName());
 		MainFrame p = new MainFrame();
 	}
 }

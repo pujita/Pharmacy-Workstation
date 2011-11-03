@@ -88,13 +88,18 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	@Override
 	public void goNext(String id) {
 		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
-		String error = "No such medicine exists for this patient. Place in discard bin and try again.";
-		if(patientMed == null){
-			JOptionPane.showMessageDialog(null,error);
-		}
-		else{
-			openMed (patientMed, patientID);
-		}
-		
+		String error = "No such medicine exists for this patient or it has already been scanned. Place in discard bin and try again.";
+
+			for (int i = 0; i < medsTaken.size(); i++){
+				if (Integer.parseInt(medsTaken.get(i).getID()) == Integer.parseInt(id)){
+					if(!medsTaken.get(i).getTaken()){
+						medsTaken.get(i).setTaken();
+						openMed (patientMed, patientID);
+						return;
+					}
+				}
+			}
+			JOptionPane.showMessageDialog(null,error);	
 	}
+	
 }

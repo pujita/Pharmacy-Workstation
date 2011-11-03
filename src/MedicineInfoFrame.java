@@ -1,7 +1,6 @@
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class MedicineInfoFrame extends JFrame implements FrameInterface{
@@ -51,14 +50,18 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	@Override
 	public void goNext(String id) {
 		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
-		String error = "No such medicine exists for this patient. Place in discard bin and try again.";
-		if(patientMed == null){
-			JOptionPane.showMessageDialog(null,error);
-		}
-		else{
-			medPanel.setPanel(patientMed);
-		}
+		String error = "No such medicine exists for this patient or it has already been scanned. Place in discard bin and try again.";
 		
+			for (int i = 0; i < prevFrame.medsTaken.size(); i++){
+				if (Integer.parseInt(prevFrame.medsTaken.get(i).getID()) == Integer.parseInt(id)){
+					if(!prevFrame.medsTaken.get(i).getTaken()){
+						prevFrame.medsTaken.get(i).setTaken();
+						medPanel.setPanel(patientMed);
+						return;
+					}
+				}
+			}
+			JOptionPane.showMessageDialog(null,error);
 	}
 	public static void main (String[] args){
 		//Medicine.createMedList();

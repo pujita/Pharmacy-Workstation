@@ -23,6 +23,9 @@ public class MedicineTaken {
 		return medicineID;
 	}
 	
+	public void setTaken(){
+		taken = true;
+	}
 	
 	
 	public static ArrayList<MedicineTaken> takenMeds(Patient p){
