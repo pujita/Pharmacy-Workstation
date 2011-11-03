@@ -1,6 +1,7 @@
 import javax.swing.*;
+
 import java.awt.*;
-import java.awt.event.*;
+
 
 /**
  * 
@@ -8,15 +9,14 @@ import java.awt.event.*;
  *
  */
 @SuppressWarnings("serial")
-public class PatientInfoFrame extends JFrame{
-
+public class PatientInfoFrame extends JFrame implements FrameInterface{
 	
-	private JButton backButton;
-	private JPanel buttonPanel;
-	private JTextField textBox;
-	private MainFrame prevFrame;
+	private ButtonPanel buttonPanel;
+	private JFrame prevFrame;
 	private PatientInfoPanel infoPanel;
 	private MultiMedsPanel medsPanel;
+	String patientID;
+	//private JFrame newPrevFrame;
 	
 	/**
 	 * Constructor for this class. Requires a reference to {@link MainFrame} in order for
@@ -26,15 +26,8 @@ public class PatientInfoFrame extends JFrame{
 	public PatientInfoFrame(MainFrame prevFrame){
 		super("Pharmacy Workstation");
 		infoPanel = new PatientInfoPanel();
-		infoPanel.setBounds(10, 10, 50, 50);
 		medsPanel = new MultiMedsPanel();
-
-		buttonPanel = new JPanel();
-		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
-		backButton = new JButton("Back");
-		backButton.addActionListener(new ButtonListener());	
-		buttonPanel.add(backButton);
-
+		buttonPanel = new ButtonPanel("Back", "Next", "Done", this);
 		this.prevFrame = prevFrame;
 		
 		super.add(infoPanel, BorderLayout.PAGE_START);
@@ -49,28 +42,46 @@ public class PatientInfoFrame extends JFrame{
 	 * @param p The Patient that you want to display information for.
 	 */
 	public void open(Patient p) {
+		patientID = p.getID();
 		infoPanel.setPatient(p);
 		medsPanel.setMedsPanel(p);
 		super.add(medsPanel, BorderLayout.CENTER);
 		super.setVisible(true);
 	}
-
-	/**
-	 * Called by {@link ButtonListener}. Takes a user back to the MainFrame by changing visibility state.
-	 */
-	private void goBack(){
-		super.setVisible(false);
-		prevFrame.frame.setVisible(true);
+	
+	public void openMed(Medicine med){
+		prevFrame = this;
+		
 	}
 	
 	/**
-	 * Listener called when user selects "Go Back". The user will be taken back to the {@link MainFrame}
-	 * @author pujita
-	 *
+	 * Called by {@link ButtonListener}. Takes a user back to the MainFrame by changing visibility state.
 	 */
-	private class ButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			goBack();
+	@Override
+	public void goBack(){
+		this.setVisible(false);
+		//if(newPrevFrame == null)
+		prevFrame.setVisible(true);
+	}
+
+	@Override
+	public void done() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void goNext(String id) {
+		//Medicine med = Medicine.medMap.get(id);
+		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
+		String error = "No such medicine exists for this patient. Place in discard bin and try again.";
+		if(patientMed == null){
+			JOptionPane.showMessageDialog(null,error);
 		}
+		//else{
+			//otherView.open(p);
+			//setVisible(false);
+		//}
+		
 	}
 }

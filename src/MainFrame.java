@@ -1,71 +1,57 @@
 import javax.swing.*;
 
-import java.awt.BorderLayout;
-import java.awt.event.*;
-// Start screen
-public class MainFrame {
 
-	JFrame frame;
-	JButton button1;
-	//JButton button2;
-	JPanel panel;
-	JLabel label;
-	JTextField textBox;
+@SuppressWarnings("serial")
+public class MainFrame extends JFrame implements FrameInterface{
+
+	ButtonPanel buttonPanel;
 	PatientInfoFrame otherView;
-	String patientID;
 	
 	public MainFrame(){
-		frame = new JFrame("Pharmacy Workstation");
-		panel = new JPanel();
-		button1 = new JButton("get info");
-		//button2 = new JButton("button2");
-		label = new JLabel("Patient ID:");
-		textBox = new JTextField("Type patient ID");
-		ButtonListener listen = new ButtonListener();
-		button1.addActionListener(listen);	
-		//button2.addActionListener(listen);	
 		
+		super("Pharmacy Workstation");
 		otherView = new PatientInfoFrame(this);
-		patientID = "0";
-		frame.setSize(500, 700);
-		frame.add(panel);
-	
-		panel.add(button1, BorderLayout.PAGE_END);
-		//panel.add(button2);
-		panel.add(label, BorderLayout.CENTER);
-		panel.add(textBox,BorderLayout.CENTER);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		//frame.pack();
-		frame.setVisible(true);
+		setSize(500, 700);
+		buttonPanel = new ButtonPanel("Next", this);
+		add(buttonPanel);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setVisible(true);
 	}
-
+	/*
 	public int getID (){
 		return Integer.parseInt(textBox.getText());
 	}
-	
-	private class ButtonListener implements ActionListener{
-		public void actionPerformed(ActionEvent e){
-			Patient p = Patient.patientMap.get(textBox.getText());
-			String error = "Invalid Patient ID. Try again.";
-			if (e.getSource() == button1) {
-				if(p == null){
-					JOptionPane.showMessageDialog(null,error);
-				}
-				else{
-					otherView.open(p);
-					frame.setVisible(false);
-				}
-			}
-			//else if (e.getSource() == button2) {
-				//System.out.println("you clicked");
-			//}
-			
+	*/
+
+	@Override
+	public void goBack() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void done() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void goNext(String id){
+		Patient p = Patient.patientMap.get(id);
+		String error = "Invalid Patient ID. Try again.";
+		if(p == null){
+			JOptionPane.showMessageDialog(null,error);
+		}
+		else{
+			otherView.open(p);
+			setVisible(false);
 		}
 	}
 	
 	public static void main(String args[]) {
 		Medicine.createMedList();
 		Patient.createPatientList();
+		//System.out.println(Medicine.medMap.get("1022").getName());
 		MainFrame p = new MainFrame();
 	}
 }
