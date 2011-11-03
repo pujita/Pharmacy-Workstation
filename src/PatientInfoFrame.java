@@ -2,7 +2,6 @@ import javax.swing.*;
 
 import java.awt.*;
 
-
 /**
  * 
  * @author pujita
@@ -11,10 +10,11 @@ import java.awt.*;
 @SuppressWarnings("serial")
 public class PatientInfoFrame extends JFrame implements FrameInterface{
 	
-	private ButtonPanel buttonPanel;
-	private JFrame prevFrame;
 	private PatientInfoPanel infoPanel;
 	private MultiMedsPanel medsPanel;
+	private ButtonPanel buttonPanel;
+	private MainFrame prevFrame;
+	private MedicineInfoFrame nextFrame;
 	String patientID;
 	//private JFrame newPrevFrame;
 	
@@ -36,6 +36,10 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		super.setSize(500, 700);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
+	
+	public MainFrame getPrevFrame(){
+		return this.prevFrame;
+	}
 
 	/**
 	 * Opens the Frame with the selected Patient Information.
@@ -49,8 +53,10 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		super.setVisible(true);
 	}
 	
-	public void openMed(Medicine med){
-		prevFrame = this;
+	public void openMed(Medicine med, String patientID){
+		nextFrame = new MedicineInfoFrame(patientID, med, this);
+		nextFrame.setVisible(true);
+		setVisible(false);
 		
 	}
 	
@@ -66,22 +72,20 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 
 	@Override
 	public void done() {
-		// TODO Auto-generated method stub
+		goBack();
 		
 	}
 
 	@Override
 	public void goNext(String id) {
-		//Medicine med = Medicine.medMap.get(id);
 		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
 		String error = "No such medicine exists for this patient. Place in discard bin and try again.";
 		if(patientMed == null){
 			JOptionPane.showMessageDialog(null,error);
 		}
-		//else{
-			//otherView.open(p);
-			//setVisible(false);
-		//}
+		else{
+			openMed (patientMed, id);
+		}
 		
 	}
 }

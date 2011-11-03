@@ -58,16 +58,6 @@ public class ButtonPanel extends JPanel{
 			}
 			else if(e.getSource() == nextButton){
 				currentFrame.goNext(textBox.getText());
-				/*
-				Patient p = Patient.patientMap.get(textBox.getText());
-				String error = "Invalid Patient ID. Try again.";
-				if(p == null){
-					JOptionPane.showMessageDialog(null,error);
-				}
-				else{
-					currentFrame.goNext(p);
-				}
-				*/
 			}
 			else if(e.getSource() == doneButton){
 				currentFrame.done();

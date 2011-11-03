@@ -17,11 +17,6 @@ public class MainFrame extends JFrame implements FrameInterface{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
-	/*
-	public int getID (){
-		return Integer.parseInt(textBox.getText());
-	}
-	*/
 
 	@Override
 	public void goBack() {
