@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * 
+ * This is the second screen the pharmasict sees after inputing the patient/pillox ID. It displays all the patient info and all the required medicines he/she needs.
+ * It also has a {@link ButtonPanel} button panel (consisting of back, done and next buttons along with a text box to scan/type medicine ID).
  * @author pujita
  *
  */
@@ -38,6 +39,10 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
+	/**
+	 * Getter for previous Frame.
+	 * @return the {@link MainFrame}.
+	 */
 	public MainFrame getPrevFrame(){
 		return this.prevFrame;
 	}
@@ -55,6 +60,11 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		super.setVisible(true);
 	}
 	
+	/**
+	 * Opens the next frame, {@Link MedicineInfoFrame}
+	 * @param med is the {@Link Medicine} that the information needs to be displayed for, the medicine id that was typed in. 
+	 * @param patientID is the Patient/pillbox ID
+	 */
 	public void openMed(Medicine med, String patientID){
 		nextFrame = new MedicineInfoFrame(patientID, med, this);
 		nextFrame.setVisible(true);
@@ -63,7 +73,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	}
 	
 	/**
-	 * Called by {@link ButtonListener}. Takes a user back to the MainFrame by changing visibility state.
+	 * Takes a user back to the {@link MainFrame} by changing visibility state.
 	 */
 	@Override
 	public void goBack(){
@@ -72,6 +82,9 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		prevFrame.setVisible(true);
 	}
 
+	/**
+	 * Checks if all the medicines needed are scanned. If they are then it takes the user to {@link MainFrame}. Otherwise it prompts an error.
+	 */
 	@Override
 	public void done() {
 		String error = "Not done, missing meds! Collect again";
@@ -84,7 +97,11 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		goBack();
 		
 	}
-
+	
+	/**
+	 * Takes the inputed medicine ID and updates that it has been scanned in the @link {@link MedicineTaken}, then displays the next frame by calling {@link openMed}.
+	 * and prompts an error if no such medicine exists for the patient.
+	 */	
 	@Override
 	public void goNext(String id) {
 		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);

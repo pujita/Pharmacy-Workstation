@@ -1,18 +1,27 @@
 import javax.swing.*;
-
 import java.awt.*;
 
+/**
+ * This is the Third screen that the user sees. It consists of the same button panel {@link ButtonPanel} as the previous two. 
+ * It Displays the information for the medicine ID that inputed in the previous screen.
+ * @author pujita
+ *
+ */
 @SuppressWarnings("serial")
 public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	
 	private ButtonPanel buttonPanel;
-	//private PatientInfoPanel infoPanel;
 	private MedInfoPanel medPanel = new MedInfoPanel();
 	private String patientID;
 	private PatientInfoFrame prevFrame;
 	private MainFrame mainFrame;
-	//static ArrayList<String> medsTaken = new ArrayList<String>();
-	
+
+	/**
+	 * Constructor for {@link MedicineInfoFrame}
+	 * @param id is the {@link Patient} ID for which the medicines are being displayed
+	 * @param med is the {@link Medicine} for which the information is being displayed
+	 * @param prev is a reference to previous {@link PatientInfoFrame} 
+	 */
 	public MedicineInfoFrame(String id, Medicine med, PatientInfoFrame prev){
 		super("Pharmacy Workstation");
 		patientID = id;
@@ -26,7 +35,10 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 		super.setSize(500, 700);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
-
+	
+	/**
+	 * Takes a user back to the {@link MainFrame} by changing visibility state.
+	 */
 	@Override
 	public void goBack() {
 		prevFrame.setVisible(true);
@@ -34,6 +46,9 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 		
 	}
 
+	/**
+	 * Checks if all the medicines needed are scanned. If they are then it takes the user to {@link MainFrame}. Otherwise it prompts an error.
+	 */
 	@Override
 	public void done() {
 		String error = "Not done, missing meds! Collect again";
@@ -47,6 +62,10 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 		setVisible(false);
 	}
 
+	/**
+	 * Takes the inputed medicine ID and updates that it has been scanned in the @link {@link MedicineTaken}, then displays the next frame by calling {@link openMed}.
+	 * and prompts an error if no such medicine exists for the patient.
+	 */
 	@Override
 	public void goNext(String id) {
 		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
@@ -62,11 +81,6 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 				}
 			}
 			JOptionPane.showMessageDialog(null,error);
-	}
-	public static void main (String[] args){
-		//Medicine.createMedList();
-		//Patient.createPatientList();
-		//System.out.println(Patient.patientMap.get("1").getMeds().get("1011"));
 	}
 
 }
