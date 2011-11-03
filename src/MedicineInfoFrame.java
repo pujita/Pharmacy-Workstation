@@ -51,5 +51,10 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 		}
 		
 	}
+	public static void main (String[] args){
+		//Medicine.createMedList();
+		//Patient.createPatientList();
+		//System.out.println(Patient.patientMap.get("1").getMeds().get("1011"));
+	}
 
 }

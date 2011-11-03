@@ -84,7 +84,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 			JOptionPane.showMessageDialog(null,error);
 		}
 		else{
-			openMed (patientMed, id);
+			openMed (patientMed, patientID);
 		}
 		
 	}

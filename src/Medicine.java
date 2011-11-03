@@ -128,10 +128,10 @@ public class Medicine {
 
 	
 	public static void main(String[] args){
-		createMedList();
-		System.out.println(Medicine.medMap.get("1011").getName());
-		System.out.println(Medicine.medMap.get("1011").getScientificName());
-		System.out.println(Medicine.medMap.get("1011").getDose());
+		//createMedList();
+		//System.out.println(Medicine.medMap.get("1011").getName());
+		//System.out.println(Medicine.medMap.get("1011").getScientificName());
+		//System.out.println(Medicine.medMap.get("1011").getDose());
 		
 	}
 	
