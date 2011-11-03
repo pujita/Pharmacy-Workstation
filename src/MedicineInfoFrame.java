@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class MedicineInfoFrame extends JFrame implements FrameInterface{
@@ -11,6 +12,7 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	private String patientID;
 	private PatientInfoFrame prevFrame;
 	private MainFrame mainFrame;
+	//static ArrayList<String> medsTaken = new ArrayList<String>();
 	
 	public MedicineInfoFrame(String id, Medicine med, PatientInfoFrame prev){
 		super("Pharmacy Workstation");
@@ -35,6 +37,13 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 
 	@Override
 	public void done() {
+		String error = "Not done, missing meds! Collect again";
+		for(int i = 0; i < prevFrame.medsTaken.size(); i++){
+			if(!prevFrame.medsTaken.get(i).getTaken()){
+				JOptionPane.showMessageDialog(null,error);
+				return;
+			}
+		}
 		mainFrame.setVisible(true);
 		setVisible(false);
 	}

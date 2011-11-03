@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * 
@@ -16,7 +17,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	private MainFrame prevFrame;
 	private MedicineInfoFrame nextFrame;
 	String patientID;
-	//private JFrame newPrevFrame;
+	ArrayList<MedicineTaken> medsTaken;
 	
 	/**
 	 * Constructor for this class. Requires a reference to {@link MainFrame} in order for
@@ -47,6 +48,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	 */
 	public void open(Patient p) {
 		patientID = p.getID();
+		medsTaken = MedicineTaken.takenMeds(p);
 		infoPanel.setPatient(p);
 		medsPanel.setMedsPanel(p);
 		super.add(medsPanel, BorderLayout.CENTER);
@@ -72,6 +74,13 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 
 	@Override
 	public void done() {
+		String error = "Not done, missing meds! Collect again";
+		for(int i = 0; i < medsTaken.size(); i++){
+			if(!medsTaken.get(i).getTaken()){
+				JOptionPane.showMessageDialog(null,error);
+				return;
+			}
+		}
 		goBack();
 		
 	}
