@@ -65,7 +65,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	 * @param med is the {@Link Medicine} that the information needs to be displayed for, the medicine id that was typed in. 
 	 * @param patientID is the Patient/pillbox ID
 	 */
-	public void openMed(Medicine med, String patientID){
+	public void openMed(MedicineTaken med, String patientID){
 		nextFrame = new MedicineInfoFrame(patientID, med, this);
 		nextFrame.setVisible(true);
 		setVisible(false);
@@ -111,7 +111,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 				if (Integer.parseInt(medsTaken.get(i).getID()) == Integer.parseInt(id)){
 					if(!medsTaken.get(i).getTaken()){
 						medsTaken.get(i).setTaken();
-						openMed (patientMed, patientID);
+						openMed (medsTaken.get(i), patientID);
 						return;
 					}
 				}

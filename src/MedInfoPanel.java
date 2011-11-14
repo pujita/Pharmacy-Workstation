@@ -31,12 +31,21 @@ public class MedInfoPanel extends JPanel {
 
 	}
 	
-	public void setPanel(Medicine med){
+	
+	public void setPanelAllTime(Medicine med){
 		this.med = med;
 		this.medName.setText(med.getName());
 		this.id.setText(med.getMedID());
 		this.dose.setText(med.getDose() + "mg");
 		this.time.setText(med.getTimeString());
-
+	}
+	
+	public void setPanel(MedicineTaken med){
+		Medicine medicine = Medicine.medMap.get(med.getID());
+		this.med = medicine;
+		this.medName.setText(medicine.getName());
+		this.id.setText(med.getID());
+		this.dose.setText(medicine.getDose() + "mg");
+		this.time.setText(med.getTime() + " ");	
 	}
 }

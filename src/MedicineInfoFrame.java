@@ -10,8 +10,10 @@ import java.awt.*;
 @SuppressWarnings("serial")
 public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	
-	private ButtonPanel buttonPanel;
 	private MedInfoPanel medPanel = new MedInfoPanel();
+	//private JPanel panel;
+	private MultiMedsPanel medsLeft;
+	private ButtonPanel buttonPanel;
 	private String patientID;
 	private PatientInfoFrame prevFrame;
 	private MainFrame mainFrame;
@@ -22,15 +24,18 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	 * @param med is the {@link Medicine} for which the information is being displayed
 	 * @param prev is a reference to previous {@link PatientInfoFrame} 
 	 */
-	public MedicineInfoFrame(String id, Medicine med, PatientInfoFrame prev){
+	public MedicineInfoFrame(String id, MedicineTaken med, PatientInfoFrame prev){
 		super("Pharmacy Workstation");
 		patientID = id;
 		prevFrame = prev;
 		mainFrame = prevFrame.getPrevFrame();
 		medPanel.setPanel(med);
 		buttonPanel = new ButtonPanel("Back", "Next", "Done", this);
+		medsLeft = new MultiMedsPanel();
+		medsLeft.setTakenMedsPanel(prev.medsTaken);
 		
-		super.add(medPanel, BorderLayout.CENTER);
+		super.add(medPanel, BorderLayout.PAGE_START);
+		super.add(medsLeft, BorderLayout.CENTER);
 		super.add(buttonPanel,BorderLayout.PAGE_END);
 		super.setSize(500, 700);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -68,14 +73,15 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	 */
 	@Override
 	public void goNext(String id) {
-		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
+		//Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
 		String error = "No such medicine exists for this patient or it has already been scanned. Place in discard bin and try again.";
 		
 			for (int i = 0; i < prevFrame.medsTaken.size(); i++){
 				if (Integer.parseInt(prevFrame.medsTaken.get(i).getID()) == Integer.parseInt(id)){
 					if(!prevFrame.medsTaken.get(i).getTaken()){
 						prevFrame.medsTaken.get(i).setTaken();
-						medPanel.setPanel(patientMed);
+						medPanel.setPanel(prevFrame.medsTaken.get(i) );
+						medsLeft.setTakenMedsPanel(prevFrame.medsTaken);
 						return;
 					}
 				}
