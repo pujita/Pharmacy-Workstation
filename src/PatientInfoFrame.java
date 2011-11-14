@@ -35,7 +35,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		super.add(infoPanel, BorderLayout.PAGE_START);
 		super.add(medsPanel, BorderLayout.CENTER);
 		super.add(buttonPanel,BorderLayout.PAGE_END);
-		super.setSize(500, 700);
+		super.setSize(500, 600);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	

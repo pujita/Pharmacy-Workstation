@@ -37,7 +37,7 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 		super.add(medPanel, BorderLayout.PAGE_START);
 		super.add(medsLeft, BorderLayout.CENTER);
 		super.add(buttonPanel,BorderLayout.PAGE_END);
-		super.setSize(500, 700);
+		super.setSize(500, 600);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
@@ -82,6 +82,8 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 						prevFrame.medsTaken.get(i).setTaken();
 						medPanel.setPanel(prevFrame.medsTaken.get(i) );
 						medsLeft.setTakenMedsPanel(prevFrame.medsTaken);
+						//Needed to refresh the UI
+						SwingUtilities.updateComponentTreeUI(this);
 						return;
 					}
 				}

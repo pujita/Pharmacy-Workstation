@@ -1,3 +1,5 @@
+import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
@@ -20,9 +22,15 @@ public class MainFrame extends JFrame implements FrameInterface{
 		
 		super("Pharmacy Workstation");
 		otherView = new PatientInfoFrame(this);
-		setSize(500, 700);
+		setSize(500, 600);
+		JLabel prompt = new JLabel("Scan Pillbox to start");
+		prompt.setFont(new Font("Serif", Font.BOLD, 20));
+		JLabel title = new JLabel("PHARMACY WORKSTATION");
+		title.setFont(new Font("Serif", Font.BOLD, 26));
 		buttonPanel = new ButtonPanel("Next", this);
-		add(buttonPanel);
+		add(title, BorderLayout.PAGE_START);
+		add(prompt, BorderLayout.CENTER);
+		add(buttonPanel, BorderLayout.PAGE_END);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}

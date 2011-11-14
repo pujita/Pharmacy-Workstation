@@ -4,57 +4,70 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class MultiMedsPanel extends JPanel{
-	
-	MedInfoPanel[] panel = new MedInfoPanel[5];
-	//MedInfoPanel panel = new MedInfoPanel();
 		
 	public MultiMedsPanel(){
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		
-		panel[0] = new MedInfoPanel();
-		panel[1] = new MedInfoPanel();
-		panel[2] = new MedInfoPanel();
-		panel[3] = new MedInfoPanel();
-		panel[4] = new MedInfoPanel();
-
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		add(panel[0]);
-		add(panel[1]);
-		add(panel[2]);
-		add(panel[3]);
-		add(panel[4]);
-		
 	}
 	
-	
+	/**
+	 * Set initial medicine info panel showing medicines with all possible times
+	 */
 	public void setMedsPanel(Patient p){
-		panel[0].panelReset();
-		panel[1].panelReset();
-		panel[2].panelReset();
-		panel[3].panelReset();
-		panel[4].panelReset();
+		this.removeAll();
+		super.setLayout(new SpringLayout());
+		int row = 2;
+		super.add(new JLabel("Medicines:"));
+		super.add(new JLabel(""));
+		super.add(new JLabel(""));
+		super.add(new JLabel(""));
+		super.add(new JLabel("ID"));
+		super.add(new JLabel("Name"));
+		super.add(new JLabel("Times"));
+		super.add(new JLabel("Dose (mg)"));
 		
-		int count = 0;
 		for (String key : p.getMeds().keySet()) {
-			panel[count].setPanelAllTime(p.getMeds().get(key));
-			count++;
+			Medicine med = p.getMeds().get(key);
+			super.add(new JLabel(med.getMedID()));
+			super.add(new JLabel(med.getName()));
+			super.add(new JLabel(med.getTimeString()));
+			super.add(new JLabel(med.getDose()));
+			row++;
 		}
+		SpringUtilities.makeCompactGrid(this,
+                row, 4, //rows, cols
+                5, 5, //initialX, initialY
+                10, 10);//xPad, yPad
 		
 	}
-
-
+	
+	/**
+	 * Set Still needed medicines 
+	 * @param meds
+	 */
 	public void setTakenMedsPanel(ArrayList<MedicineTaken> meds){
-		panel[0].panelReset();
-		panel[1].panelReset();
-		panel[2].panelReset();
-		panel[3].panelReset();
-		panel[4].panelReset();
-		int count = 0;
+		this.removeAll();
+		super.setLayout(new SpringLayout());
+		int row = 2;
+		super.add(new JLabel("Medicines Left:"));
+		super.add(new JLabel(""));
+		super.add(new JLabel(""));
+		super.add(new JLabel(""));
+		super.add(new JLabel("ID"));
+		super.add(new JLabel("Name"));
+		super.add(new JLabel("Times"));
+		super.add(new JLabel("Dose (mg)"));
+		
 		for(int i = 0; i < meds.size(); i++){
 			if(!meds.get(i).getTaken()){
-				panel[count].setPanel(meds.get(i));
-				count++;
+				super.add(new JLabel(meds.get(i).getID()));
+				super.add(new JLabel(meds.get(i).getName()));
+				super.add(new JLabel(meds.get(i).getTime()));
+				super.add(new JLabel(meds.get(i).getDose()));
+				row++;
 			}
+			SpringUtilities.makeCompactGrid(this,
+	                row, 4, //rows, cols
+	                5, 5, //initialX, initialY
+	                10, 10);//xPad, yPad
 		}
 	}
 }

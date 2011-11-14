@@ -23,6 +23,16 @@ public class MedicineTaken {
 		return medicineID;
 	}
 	
+	public String getDose(){
+		Medicine m = Medicine.medMap.get(medicineID);
+		return m.getDose();
+	}
+	
+	public String getName(){
+		Medicine m = Medicine.medMap.get(medicineID);
+		return m.getName();
+	}
+	
 	public void setTaken(){
 		taken = true;
 	}
