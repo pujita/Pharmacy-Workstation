@@ -1,2 +1,3 @@
-1011| Panadol |Paracetamol |as needed | 500| Painkiller, take as needed   
-1022| Penecillin |Penecillin |10am, 12pm, 6pm| 500| Take thrice a day after food   
+1011| Panadol |Paracetamol |as needed| 500| Painkiller, take as needed   
+1022| Penecillin |Penecillin |6 am, 12 pm, 6 pm| 500| Take thrice a day after food  
+1033| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food   

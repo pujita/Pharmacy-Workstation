@@ -1,4 +1,5 @@
 import javax.swing.*;
+
 import java.awt.*;
 
 /**
@@ -11,9 +12,10 @@ import java.awt.*;
 public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	
 	private MedInfoPanel medPanel = new MedInfoPanel();
-	//private JPanel panel;
 	private MultiMedsPanel medsLeft;
 	private ButtonPanel buttonPanel;
+	//private ImagePanel imagePanel = new ImagePanel();
+	//JButton image;
 	private String patientID;
 	private PatientInfoFrame prevFrame;
 	private MainFrame mainFrame;
@@ -33,12 +35,29 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 		buttonPanel = new ButtonPanel("Back", "Next", "Done", this);
 		medsLeft = new MultiMedsPanel();
 		medsLeft.setTakenMedsPanel(prev.medsTaken);
+		//imagePanel.setImagePanel(med.getTime().trim() + ".gif");
+		/*
+		String time = med.getTime();
+		time = time.trim()+ ".gif";
+		ImageIcon icon = new ImageIcon(time	);
+	    image = new JButton(icon);
+	    //image.setSize(400, 100);
 		
-		super.add(medPanel, BorderLayout.PAGE_START);
-		super.add(medsLeft, BorderLayout.CENTER);
-		super.add(buttonPanel,BorderLayout.PAGE_END);
+		*/
+		
+		//imagePanel.setLayout(new BorderLayout());
+		//panel.add(image, BorderLayout.PAGE_START);
+		//panel.add(buttonPanel, BorderLayout.PAGE_END);
+		//setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+		add(medPanel,BorderLayout.PAGE_START);
+		add(medsLeft, BorderLayout.CENTER);
+		//add(imagePanel);
+	    add(buttonPanel, BorderLayout.PAGE_END);
+		//imagePanel.add(image,BorderLayout.PAGE_END);
 		super.setSize(500, 600);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		
 	}
 	
 	/**
@@ -82,6 +101,14 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 						prevFrame.medsTaken.get(i).setTaken();
 						medPanel.setPanel(prevFrame.medsTaken.get(i) );
 						medsLeft.setTakenMedsPanel(prevFrame.medsTaken);
+						
+						String time = prevFrame.medsTaken.get(i).getTime();
+						time = time.trim()+ ".gif";
+						//imagePanel.setImagePanel(time);
+						
+						
+						//ImageIcon icon = new ImageIcon(time	);
+					    //image = new JButton(icon);
 						//Needed to refresh the UI
 						SwingUtilities.updateComponentTreeUI(this);
 						return;
