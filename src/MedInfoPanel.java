@@ -49,7 +49,7 @@ public class MedInfoPanel extends JPanel {
 		String time = med.getTime().trim()+ ".gif";
 		ImageIcon icon = new ImageIcon(time);
 		JButton image = new JButton(icon);
-		add(info, BorderLayout.PAGE_START);
-		add(image, BorderLayout.PAGE_END);
+		add(info, BorderLayout.WEST);
+		add(image, BorderLayout.SOUTH);
 	}
 }
