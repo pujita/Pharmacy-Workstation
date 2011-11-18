@@ -13,6 +13,7 @@ public class MainFrame extends JFrame implements FrameInterface{
 
 	ButtonPanel buttonPanel;
 	PatientInfoFrame otherView;
+	SettingsFrame setting;
 	
 	/**
 	 * Constructor that adds a {@link ButtonPanel} button panel (text box to input ID) and a Next button.
@@ -73,7 +74,9 @@ public class MainFrame extends JFrame implements FrameInterface{
 	 * Settings page
 	 */
 	public void setting(){
-		
+		setVisible(false);
+		setting = new SettingsFrame();
+		setting.setVisible(true);
 	}
 
 	/**
