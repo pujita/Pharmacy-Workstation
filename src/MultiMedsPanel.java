@@ -1,4 +1,3 @@
-import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -12,40 +11,6 @@ public class MultiMedsPanel extends JPanel{
 	/**
 	 * Set initial medicine info panel showing medicines with all possible times
 	 */
-	/*
-	public void setMedsPanel(Patient p){
-		this.removeAll();
-		JPanel panel = new JPanel();
-		panel.setLayout(new SpringLayout());
-		int row = 2;
-		panel.add(new JLabel("Medicines:"));
-		panel.add(new JLabel(""));
-		panel.add(new JLabel(""));
-		panel.add(new JLabel(""));
-		panel.add(new JLabel("ID"));
-		panel.add(new JLabel("Name"));
-		panel.add(new JLabel("Times"));
-		panel.add(new JLabel("Dose (mg)"));
-		
-		for (String key : p.getMeds().keySet()) {
-			Medicine med = p.getMeds().get(key);
-			panel.add(new JLabel(med.getMedID()));
-			panel.add(new JLabel(med.getName()));
-			panel.add(new JLabel(med.getTimeString()));
-			panel.add(new JLabel(med.getDose()));
-			row++;
-		}
-		SpringUtilities.makeCompactGrid(panel,
-                row, 4, //rows, cols
-                5, 5, //initialX, initialY
-                10, 10);//xPad, yPad
-		JLabel prompt = new JLabel("The cabinets have been lit. Please retrieve the medicines and scan first medicine to proceed.");
-		prompt.setFont(new Font("Serif", Font.BOLD, 20));
-		this.add(panel);
-		this.add(prompt);
-	}
-	*/
-	
 	public void setMedsPanel(Patient p){
 		this.removeAll();
 		super.setLayout(new SpringLayout());

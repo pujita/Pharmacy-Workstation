@@ -1,4 +1,4 @@
-import javax.swing.*;
+ import javax.swing.*;
 
 import java.awt.*;
 
@@ -14,11 +14,11 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	private MedInfoPanel medPanel = new MedInfoPanel();
 	private MultiMedsPanel medsLeft;
 	private ButtonPanel buttonPanel;
-	//private ImagePanel imagePanel = new ImagePanel();
-	//JButton image;
-	private String patientID;
+	private ImagePanel image;
+	private JPanel panel = new JPanel();
 	private PatientInfoFrame prevFrame;
 	private MainFrame mainFrame;
+	//Boolean allDone = true;
 
 	/**
 	 * Constructor for {@link MedicineInfoFrame}
@@ -28,32 +28,22 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	 */
 	public MedicineInfoFrame(String id, MedicineTaken med, PatientInfoFrame prev){
 		super("Pharmacy Workstation");
-		patientID = id;
+		
+		
 		prevFrame = prev;
 		mainFrame = prevFrame.getPrevFrame();
 		medPanel.setPanel(med);
+		image = new ImagePanel(med.getTime());
 		buttonPanel = new ButtonPanel("Back", "Next", "Done", this);
 		medsLeft = new MultiMedsPanel();
+		
 		medsLeft.setTakenMedsPanel(prev.medsTaken);
-		//imagePanel.setImagePanel(med.getTime().trim() + ".gif");
-		/*
-		String time = med.getTime();
-		time = time.trim()+ ".gif";
-		ImageIcon icon = new ImageIcon(time	);
-	    image = new JButton(icon);
-	    //image.setSize(400, 100);
-		
-		*/
-		
-		//imagePanel.setLayout(new BorderLayout());
-		//panel.add(image, BorderLayout.PAGE_START);
-		//panel.add(buttonPanel, BorderLayout.PAGE_END);
-		//setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+		panel.add(medsLeft);
+		panel.add(buttonPanel);
 		add(medPanel,BorderLayout.PAGE_START);
-		add(medsLeft, BorderLayout.CENTER);
-		//add(imagePanel);
-	    add(buttonPanel, BorderLayout.PAGE_END);
-		//imagePanel.add(image,BorderLayout.PAGE_END);
+		add(image, BorderLayout.CENTER);
+	    add(panel, BorderLayout.PAGE_END);
 		super.setSize(500, 600);
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
@@ -99,16 +89,21 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 				if (Integer.parseInt(prevFrame.medsTaken.get(i).getID()) == Integer.parseInt(id)){
 					if(!prevFrame.medsTaken.get(i).getTaken()){
 						prevFrame.medsTaken.get(i).setTaken();
+						/*
+						for(int j = 0; j < prevFrame.medsTaken.size(); j++){
+							if(!prevFrame.medsTaken.get(j).getTaken()){
+								allDone = false;
+							}
+						}
+						if(allDone){
+							done();
+						}
+						*/
 						medPanel.setPanel(prevFrame.medsTaken.get(i) );
 						medsLeft.setTakenMedsPanel(prevFrame.medsTaken);
-						
-						String time = prevFrame.medsTaken.get(i).getTime();
-						time = time.trim()+ ".gif";
-						//imagePanel.setImagePanel(time);
+						image.setImagePanel(prevFrame.medsTaken.get(i).getTime());
 						
 						
-						//ImageIcon icon = new ImageIcon(time	);
-					    //image = new JButton(icon);
 						//Needed to refresh the UI
 						SwingUtilities.updateComponentTreeUI(this);
 						return;
@@ -116,6 +111,15 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 				}
 			}
 			JOptionPane.showMessageDialog(null,error);
+	}
+
+	/**
+	 * Settings Page, does nothing 
+	 */
+	@Override
+	public void setting() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

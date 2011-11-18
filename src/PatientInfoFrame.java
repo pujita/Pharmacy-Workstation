@@ -104,7 +104,7 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	 */	
 	@Override
 	public void goNext(String id) {
-		Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
+		//Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
 		String error = "No such medicine exists for this patient or it has already been scanned. Place in discard bin and try again.";
 
 			for (int i = 0; i < medsTaken.size(); i++){
@@ -117,6 +117,15 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 				}
 			}
 			JOptionPane.showMessageDialog(null,error);	
+	}
+
+	/**
+	 * Settings page, does nothing
+	 */
+	@Override
+	public void setting() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

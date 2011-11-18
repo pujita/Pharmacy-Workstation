@@ -1,7 +1,5 @@
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.awt.GridBagLayout;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 /**
@@ -28,7 +26,7 @@ public class MainFrame extends JFrame implements FrameInterface{
 		prompt.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel title = new JLabel("           PHARMACY WORKSTATION");
 		title.setFont(new Font("Serif", Font.BOLD, 26));
-		buttonPanel = new ButtonPanel("Next", this);
+		buttonPanel = new ButtonPanel("Next","Settings", this);
 		
 		add(title, BorderLayout.PAGE_START);
 		add(prompt, BorderLayout.CENTER);
@@ -69,6 +67,12 @@ public class MainFrame extends JFrame implements FrameInterface{
 	@Override
 	public void done() {
 		// TODO Auto-generated method stub
+		
+	}
+	/**
+	 * Settings page
+	 */
+	public void setting(){
 		
 	}
 

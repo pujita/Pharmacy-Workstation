@@ -14,6 +14,7 @@ public class ButtonPanel extends JPanel{
 	
 	private JButton backButton = new JButton("Back");
 	private JButton doneButton = new JButton("Done");
+	private JButton settings = new JButton("Settings");
 	private JButton nextButton = new JButton("Next");
 	private JTextField textBox = new JTextField();
 	FrameInterface currentFrame;
@@ -34,23 +35,19 @@ public class ButtonPanel extends JPanel{
 		add(doneButton);
 	}
 
-	public ButtonPanel(String next, FrameInterface currentFrame){
+	public ButtonPanel(String next, String setting, FrameInterface currentFrame){
 		
 		this.currentFrame = currentFrame;
 		nextButton = new JButton(next);
+		settings = new JButton(setting);
 		setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 		nextButton.addActionListener(new ButtonListener());
+		settings.addActionListener(new ButtonListener());
 		add(textBox);
 		add(nextButton);
+		add(settings);
 	}
 	
-
-/*
-	public ButtonPanel(FrameInterface currentFrame) {
-		this();
-		this.currentFrame = currentFrame;
-	}
-	*/
 	private class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if (e.getSource() == backButton) {
@@ -61,6 +58,9 @@ public class ButtonPanel extends JPanel{
 			}
 			else if(e.getSource() == doneButton){
 				currentFrame.done();
+			}
+			else if(e.getSource() == settings){
+				currentFrame.setting();
 			}
 		}
 	}
