@@ -127,5 +127,29 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void selectAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

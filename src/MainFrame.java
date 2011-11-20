@@ -13,7 +13,7 @@ public class MainFrame extends JFrame implements FrameInterface{
 
 	ButtonPanel buttonPanel;
 	PatientInfoFrame otherView;
-	SettingsFrame setting;
+	SettingsFrame setting = new SettingsFrame(this);
 	
 	/**
 	 * Constructor that adds a {@link ButtonPanel} button panel (text box to input ID) and a Next button.
@@ -75,7 +75,7 @@ public class MainFrame extends JFrame implements FrameInterface{
 	 */
 	public void setting(){
 		setVisible(false);
-		setting = new SettingsFrame();
+		setting.setSettingsFrame();
 		setting.setVisible(true);
 	}
 
@@ -87,5 +87,29 @@ public class MainFrame extends JFrame implements FrameInterface{
 		Medicine.createMedList();
 		Patient.createPatientList();
 		MainFrame p = new MainFrame();
+	}
+
+	@Override
+	public void selectAll() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void save() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void add() {
+		// TODO Auto-generated method stub
+		
 	}
 }

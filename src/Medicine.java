@@ -1,5 +1,7 @@
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -135,7 +137,27 @@ public class Medicine {
 			e.printStackTrace();
 		}
 	}
-
+/*
+	public static void editModuleNo(String medID){
+	
+		 try {
+			FileReader fin = new FileReader("Medicine.txt");
+			BufferedWriter writer = new BufferedWriter("Medicine.txt");
+			Scanner scan = new Scanner(fin);
+				
+			while(scan.hasNextLine()){
+				String med = scan.nextLine();
+				if(med.split("\\|")[0].equals(medID)){	
+				
+				}
+						//medMap.put(med.split("\\|")[0], new Medicine(med, "\\|"));
+			}
+			fin.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}*/
 	
 	public static void main(String[] args){
 		//createMedList();
