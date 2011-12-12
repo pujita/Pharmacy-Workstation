@@ -11,6 +11,7 @@ public class Medicine {
 
 	private String name;
 	private int medID;
+	int amount;
 	private String moduleNo;
 	private String scientificName;
 	private ArrayList<String> time = new ArrayList<String>();
@@ -29,6 +30,7 @@ public class Medicine {
 		setName(tokens[1]);
 		setScientificName(tokens[2]);
 		setTime(tokens[3]);
+		setAmount(tokens[3]);
 		setTimeString(tokens[3]);
 		setDose(tokens[4]);
 		setNotes(tokens[5]);
@@ -68,6 +70,11 @@ public class Medicine {
 		}
 	}
 	
+	public void setAmount(String time){
+		String[] times = time.split(",");
+		this.amount = times.length;
+	}
+	
 	public void setTimeString( String time){
 		this.timeString = time;
 	}
@@ -104,6 +111,10 @@ public class Medicine {
 	
 	public ArrayList<String> getTime(){
 		return time;
+	}
+	
+	public String getAmount(){
+		return Integer.toString(amount);
 	}
 	
 	public String getTimeString(){

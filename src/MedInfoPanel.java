@@ -18,9 +18,12 @@ public class MedInfoPanel extends JPanel {
 		super.add(new JLabel(med.getDose()));
 		super.add(new JLabel("Time:"));
 		super.add(new JLabel(med.getTime()));
-	
+		super.add(new JLabel("Module No:"));
+		super.add(new JLabel(Medicine.medMap.get(med.getID()).getModuleNo()));
+		super.add(new JLabel("Amount:"));
+		super.add(new JLabel(Medicine.medMap.get(med.getID()).getAmount()));
 		SpringUtilities.makeCompactGrid(this,
-                4, 2, //rows, cols
+                6, 2, //rows, cols
                 5, 5, //initialX, initialY
                 10, 10);//xPad, yPad
 	}

@@ -22,7 +22,7 @@ public class MainFrame extends JFrame implements FrameInterface{
 		
 		super("Pharmacy Workstation");
 		otherView = new PatientInfoFrame(this);
-		setSize(500, 600);
+		setSize(500, 600); 
 		JLabel prompt = new JLabel("                                  Scan Pillbox to start");
 		prompt.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel title = new JLabel("           PHARMACY WORKSTATION");

@@ -98,6 +98,10 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		
 	}
 	
+	private void printInfo(){
+		
+	}
+	
 	/**
 	 * Takes the inputed medicine ID and updates that it has been scanned in the @link {@link MedicineTaken}, then displays the next frame by calling {@link openMed}.
 	 * and prompts an error if no such medicine exists for the patient.

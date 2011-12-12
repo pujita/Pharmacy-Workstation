@@ -18,7 +18,6 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	private JPanel panel = new JPanel();
 	private PatientInfoFrame prevFrame;
 	private MainFrame mainFrame;
-	//Boolean allDone = true;
 
 	/**
 	 * Constructor for {@link MedicineInfoFrame}
