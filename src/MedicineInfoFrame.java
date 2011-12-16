@@ -81,6 +81,8 @@ public class MedicineInfoFrame extends JFrame implements FrameInterface{
 	 */
 	@Override
 	public void goNext(String id) {
+		String[] tokens = id.split("=");
+		id = tokens[1];
 		//Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
 		String error = "No such medicine exists for this patient or it has already been scanned. Place in discard bin and try again.";
 		

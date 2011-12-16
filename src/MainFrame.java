@@ -14,6 +14,7 @@ public class MainFrame extends JFrame implements FrameInterface{
 	ButtonPanel buttonPanel;
 	PatientInfoFrame otherView;
 	SettingsFrame setting = new SettingsFrame(this);
+	private MBedConnector communicator = new MBedConnector();
 	
 	/**
 	 * Constructor that adds a {@link ButtonPanel} button panel (text box to input ID) and a Next button.
@@ -51,6 +52,14 @@ public class MainFrame extends JFrame implements FrameInterface{
 		else{
 			otherView.open(p);
 			setVisible(false);
+			//System.out.println(otherView.outputToMbed(p));
+			communicator.write("92,3");
+			communicator.write("20,1");
+			communicator.write("92,3");
+			//communicator.write("16,4");
+			
+			//communicator.write(otherView.lenToMbed(p) + "\n");
+			//communicator.write(otherView.addrToMbed(p) + otherView.quanToMbed(p) + "\n");
 		}
 	}
 	

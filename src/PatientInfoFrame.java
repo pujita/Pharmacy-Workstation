@@ -39,6 +39,31 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 	
+	public String addrToMbed(Patient p){
+		StringBuilder output = new StringBuilder();
+		for(String key : p.getMeds().keySet()){
+			output.append(Medicine.medMap.get(key).getModuleNo().trim());
+			output.append(",");
+		}
+		System.out.print(output);
+		return output.toString();
+	}
+	
+	public String quanToMbed(Patient p){
+		StringBuilder quantity = new StringBuilder();
+		for(String key : p.getMeds().keySet()){
+			quantity.append(Medicine.medMap.get(key).getAmount().trim());
+			quantity.append(",");
+		}
+		quantity.setLength(quantity.length()-1);
+		System.out.print(quantity);
+		return quantity.toString();
+	}
+	
+	public String lenToMbed(Patient p){
+		return Integer.toString( p.getMeds().size());
+	}
+	
 	/**
 	 * Getter for previous Frame.
 	 * @return the {@link MainFrame}.
@@ -98,9 +123,6 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 		
 	}
 	
-	private void printInfo(){
-		
-	}
 	
 	/**
 	 * Takes the inputed medicine ID and updates that it has been scanned in the @link {@link MedicineTaken}, then displays the next frame by calling {@link openMed}.
@@ -108,6 +130,9 @@ public class PatientInfoFrame extends JFrame implements FrameInterface{
 	 */	
 	@Override
 	public void goNext(String id) {
+		String[] tokens = id.split("=");
+		id = tokens[1];
+		//System.out.println(id);
 		//Medicine patientMed = Patient.patientMap.get(patientID).getMeds().get(id);
 		String error = "No such medicine exists for this patient or it has already been scanned. Place in discard bin and try again.";
 

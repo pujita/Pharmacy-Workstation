@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Patient{
 	private String patientName;
 	private String address;
-	private int patientID;
+	private String patientID;
 	private int patientRoom;
 	private String nurse;
 	private HashMap<String, Medicine> meds = new HashMap<String, Medicine>();
@@ -28,7 +28,7 @@ public class Patient{
 		}
 	}
 	
-	public Patient(String name, String address, int id, int room, String nurse) {
+	public Patient(String name, String address, String id, int room, String nurse) {
 		patientName = name;
 		this.address = address;
 		patientID = id;
@@ -65,15 +65,15 @@ public class Patient{
 	private void setID(String id){
 		id = id.trim();
 		if(id == null){
-			patientID = 0;
+			patientID = "";
 		}
 		else{
-			patientID = Integer.parseInt(id);
+			patientID = id;
 		}
 	}
 	
 	public String getID(){
-		return Integer.toString(patientID);
+		return (patientID);
 	}
 	
 	private void setRoom(String room){

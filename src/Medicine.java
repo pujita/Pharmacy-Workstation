@@ -148,34 +148,8 @@ public class Medicine {
 			e.printStackTrace();
 		}
 	}
-/*
-	public static void editModuleNo(String medID){
-	
-		 try {
-			FileReader fin = new FileReader("Medicine.txt");
-			BufferedWriter writer = new BufferedWriter("Medicine.txt");
-			Scanner scan = new Scanner(fin);
-				
-			while(scan.hasNextLine()){
-				String med = scan.nextLine();
-				if(med.split("\\|")[0].equals(medID)){	
-				
-				}
-						//medMap.put(med.split("\\|")[0], new Medicine(med, "\\|"));
-			}
-			fin.close();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-	}*/
 	
 	public static void main(String[] args){
-		//createMedList();
-		//System.out.println(Medicine.medMap.get("1011").getName());
-		//System.out.println(Medicine.medMap.get("1011").getScientificName());
-		//System.out.println(Medicine.medMap.get("1011").getDose());
-		
 	}
 	
 }

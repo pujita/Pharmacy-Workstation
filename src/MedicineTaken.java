@@ -11,6 +11,7 @@ public class MedicineTaken {
 		medicineID = medID;
 		time = t;
 	}
+	
 	public boolean getTaken(){
 		return taken;
 	}
@@ -26,6 +27,16 @@ public class MedicineTaken {
 	public String getDose(){
 		Medicine m = Medicine.medMap.get(medicineID);
 		return m.getDose();
+	}
+	
+	public String getPort(){
+		Medicine m = Medicine.medMap.get(medicineID);
+		return m.getModuleNo();
+	}
+	
+	public String getAmount(){
+		Medicine m = Medicine.medMap.get(medicineID);
+		return m.getAmount();
 	}
 	
 	public String getName(){

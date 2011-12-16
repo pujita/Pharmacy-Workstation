@@ -1,16 +1,4 @@
-1011| Panadol |Paracetamol |as needed| 500| Painkiller, take as needed| 
-1022| Penecillin |Penecillin |6 am, 12 pm, 6 pm| 500| Take thrice a day after food| 
-1033| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1044| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1055| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1066| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1077| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1088| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1099| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1013| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1014| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1015| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1016| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1017| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1018| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
-1019| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
+902537000| Panadol |Paracetamol |as needed| 500| Painkiller, take as needed| 
+902151557| Penecillin |Penecillin |6 am, 12 pm, 6 pm| 500| Take thrice a day after food| 
+902391183| Asprin |Asprin |9 am, 9 pm| 500| Take twice a day after food| 
+902362947| Cancer Med |cancer |9 am, 9 pm| 500| Take twice a day after food| 

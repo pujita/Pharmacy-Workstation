@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 public class ImagePanel extends JPanel {
 	
 	public ImagePanel(String time){
-		time = time.trim()+ ".gif";
+		time = "images/"+time.trim()+ ".gif";
 		ImageIcon icon = new ImageIcon(time);
 		JButton image = new JButton(icon);
 		super.add(image);
@@ -15,7 +15,7 @@ public class ImagePanel extends JPanel {
 		
 	public void setImagePanel(String time){
 		super.removeAll();
-		time = time.trim()+ ".gif";
+		time ="images/"+ time.trim()+ ".gif";
 		ImageIcon icon = new ImageIcon(time);
 		JButton image = new JButton(icon);
 		super.add(image);
